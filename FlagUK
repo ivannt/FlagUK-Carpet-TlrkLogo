@@ -7,7 +7,6 @@ class Program
         int[,] matrixUK = new int[nNumber, nNumber];
         int leftPartline = (nNumber / 2) - 1;
         int rightPartLine = (nNumber / 2) + 1;
-
         for (int row = 0; row < nNumber / 2; row++)
         {
             matrixUK[row, leftPartline] = 1;
