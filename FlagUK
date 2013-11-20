@@ -1,0 +1,71 @@
+using System;
+class Program
+{
+    static void Main()
+    {
+        int nNumber = int.Parse(Console.ReadLine());
+        int[,] matrixUK = new int[nNumber, nNumber];
+        int leftPartline = (nNumber / 2) - 1;
+        int rightPartLine = (nNumber / 2) + 1;
+        for (int i = 0; i < 1; i++)
+        {
+            for (int row = 0; row < nNumber / 2; row++)
+            {
+                matrixUK[row, leftPartline] = 1;
+                matrixUK[row, rightPartLine] = 2;
+                leftPartline--;
+                rightPartLine++;
+            }
+        }
+        for (int row = (nNumber / 2) - 1; row >= 0; row--)
+        {
+            for (int col = 0; col <= nNumber - 1; col++)
+            {
+                int cell = matrixUK[row, col];
+                if (cell == 1)
+                {
+                    Console.Write("\\");
+                }
+                else if (col == nNumber - ((nNumber / 2) + 1))
+                {
+                    Console.Write("|");
+                }
+                else if (cell == 2)
+                {
+                    Console.Write("/");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+        Console.Write(new string('-', nNumber / 2) + (new string('*', 1) + (new string('-', nNumber / 2))));
+        Console.WriteLine();
+        for (int row = 0; row < nNumber / 2; row++)
+        {
+            for (int col = 0; col < nNumber; col++)
+            {
+                int cell = matrixUK[row, col];
+                if (cell == 1)
+                {
+                    Console.Write("/");
+                }
+                else if (col == nNumber - ((nNumber / 2) + 1))
+                {
+                    Console.Write("|");
+                }
+                else if (cell == 2)
+                {
+                    Console.Write("\\");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+}
