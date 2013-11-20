@@ -7,15 +7,13 @@ class Program
         int[,] matrixUK = new int[nNumber, nNumber];
         int leftPartline = (nNumber / 2) - 1;
         int rightPartLine = (nNumber / 2) + 1;
-        for (int i = 0; i < 1; i++)
+
+        for (int row = 0; row < nNumber / 2; row++)
         {
-            for (int row = 0; row < nNumber / 2; row++)
-            {
-                matrixUK[row, leftPartline] = 1;
-                matrixUK[row, rightPartLine] = 2;
-                leftPartline--;
-                rightPartLine++;
-            }
+            matrixUK[row, leftPartline] = 1;
+            matrixUK[row, rightPartLine] = 2;
+            leftPartline--;
+            rightPartLine++;
         }
         for (int row = (nNumber / 2) - 1; row >= 0; row--)
         {
