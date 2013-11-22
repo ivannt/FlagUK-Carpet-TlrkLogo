@@ -1,0 +1,61 @@
+using System;
+class TlrkLogo
+{
+    static void Main()
+    {
+        int nNum = int.Parse(Console.ReadLine());
+        int widthTlrkLogo = (nNum + nNum) + ((nNum / 2) + 1) + ((nNum / 2) + 1) - 3;
+        int[,] matrixTlrkLogo = new int[widthTlrkLogo, widthTlrkLogo];
+        int diagonalLine = (nNum + nNum);
+        int hornslength = nNum / 2;
+        int directionLeft = (nNum / 2) ;
+        int directionRight = widthTlrkLogo - (nNum / 2) -1 ;
+        // Horns
+        for (int row = 0; row <= hornslength; row++)
+        {
+            matrixTlrkLogo[row, directionLeft] = 1;
+            matrixTlrkLogo[row, directionRight] = 2;
+            directionLeft--;
+            directionRight++;
+        }
+        diagonalLine = (nNum + nNum);
+        hornslength = nNum / 2;
+        directionLeft = (nNum / 2);
+        directionRight = widthTlrkLogo - (nNum / 2) - 1;
+        // Diagonals
+        for (int row = 0; row <= diagonalLine - 2; row++)
+        {
+            matrixTlrkLogo[row, directionLeft] = 3;
+            matrixTlrkLogo[row, directionRight] = 4;
+            directionLeft++;
+            directionRight--;
+        }
+        directionLeft = (nNum / 2);
+        directionRight = widthTlrkLogo - (nNum / 2) - 1;
+        //Half Rhomb
+        for (int row = widthTlrkLogo - nNum; row <= widthTlrkLogo - 1; row++)
+        {
+            matrixTlrkLogo[row, directionLeft] = 5;
+            matrixTlrkLogo[row, directionRight] = 6;
+            directionLeft++;
+            directionRight--;
+        }
+        // Matrix Initialization
+        for (int row = 0; row <= widthTlrkLogo - 1 ; row++)
+         {
+             for (int col = widthTlrkLogo - 1 ; col >= 0  ; col--)
+             {
+                 int cell = matrixTlrkLogo[row, col];
+                 if (cell == 3 || cell == 4||cell == 1 || cell == 2|| cell ==5 || cell == 6)
+                 {
+                     Console.Write("*");
+                 }
+                 else
+                 {
+                     Console.Write(".");
+                 }
+             }
+             Console.WriteLine();
+         }
+    }
+}
