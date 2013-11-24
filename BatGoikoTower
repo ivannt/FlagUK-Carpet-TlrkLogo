@@ -1,0 +1,63 @@
+using System;
+class BatGoikoTower
+{
+    static void Main()
+    {
+        int X = int.Parse(Console.ReadLine());
+        int nNumber = (X * 2);
+        int[,] matrixBatGoiko = new int[nNumber, nNumber];
+
+        int leftPosition = nNumber/2 - 1 ;
+        int rightPosition = nNumber/2;
+        for (int i = 0; i < 1; i++)
+        {
+            for (int row = 0; row < nNumber/2 ; row++)
+            {
+                matrixBatGoiko[row, leftPosition] = 1;
+                matrixBatGoiko[row, rightPosition] = 2;
+                leftPosition--;
+                rightPosition++;
+            }
+        }
+        int horizontalLine;
+        int partSide = 2;
+        for (int row = 1; row < nNumber / 2 ; row++)
+        {
+            horizontalLine = (nNumber / 2  ) - row;
+            if ( row == 1 || row == 3 || row == 6 || row == 10 
+                || row == 15 || row == 21 || row == 28 || row == 36)
+            {
+                for (int i = 0; i < partSide; i++)
+                {
+                    matrixBatGoiko[row, horizontalLine] = 3;
+                    horizontalLine++;
+                }                
+            }
+            partSide += 2;
+        }
+        for (int row = 0; row < nNumber/2 ; row++)
+        {
+            for (int col = 0; col < nNumber ; col++)
+            {
+                int cell = matrixBatGoiko[row, col];
+                if (cell == 1)
+                {
+                    Console.Write("/");
+                }
+                else if (cell == 2)
+                {
+                    Console.Write("\\");
+                }
+                else if (cell == 3 )
+                {
+                    Console.Write("-");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+}
