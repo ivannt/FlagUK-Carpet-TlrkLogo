@@ -1,0 +1,42 @@
+
+using System;
+class Trapezoid
+{
+    static void Main()
+    {
+        int X = int.Parse(Console.ReadLine());
+        int width = (2 * X) ;
+        int hight = (X + 1) ;
+        int[,] matrix = new int[hight, width];
+
+        int posdirectionL = width - 1;
+        int posRight = 0;
+        for (int row = 0 ; row < hight - 1; row++)
+        {
+            matrix[row, posdirectionL] = 1;
+            matrix[row, posRight] = 1;
+            posdirectionL--;
+        }
+        Console.Write(new string('.',X));
+        Console.Write(new string('*',X));
+        Console.WriteLine();
+        for (int row = hight - 2; row >= 1; row--)
+        {
+            for (int col = width - 1; col >= 0; col--)
+            {
+                int cell = matrix[row, col];
+                if (cell == 1)
+                {
+                    Console.Write("*");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+        Console.Write(new string('*', width));
+        Console.WriteLine();
+    }
+}
