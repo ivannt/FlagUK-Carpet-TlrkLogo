@@ -1,0 +1,43 @@
+using System;
+class FirTree
+{
+    static void Main()
+    {
+        int X = int.Parse(Console.ReadLine());
+        int nNumber = (X * 2) + 1;
+        int width = nNumber + nNumber / 2;
+        int[,] matrixFirTree = new int[nNumber, width];
+        int position;
+        int numberOfParts = 2;
+        for (int row = 0; row < nNumber / 2; row++)
+        {
+            position = (nNumber / 2 - 1) - row;
+            for (int i = 1; i < numberOfParts; i++)
+            {
+                matrixFirTree[row, position] = 3;
+                position++;
+            }
+            numberOfParts += 2;
+        }
+
+        for (int row = 0; row < nNumber / 2 - 1; row++)
+        {
+            for (int col = 1; col < nNumber - 3; col++)
+            {
+                int cell = matrixFirTree[row, col];
+                if (cell == 3)
+                {
+                    Console.Write("*");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+        Console.Write(new string('.', nNumber / 2 - 2) + 
+            (new string('*', 1) + (new string('.', nNumber / 2 - 2))));
+        Console.WriteLine();
+    }
+}
