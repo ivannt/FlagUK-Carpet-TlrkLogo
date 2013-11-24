@@ -1,0 +1,108 @@
+using System;
+class Fire
+{
+    static void Main()
+    {
+        int nNumber = int.Parse(Console.ReadLine());
+        int[,] matrixFire = new int[nNumber , nNumber];
+
+        int leftPosition = nNumber / 2 - 1;
+        int rightPosition = nNumber / 2;
+        for (int i = 0; i < 1; i++)
+        {
+            for (int row = 0; row < nNumber / 2; row++)
+            {
+                matrixFire[row, leftPosition] = 1;
+                matrixFire[row, rightPosition] = 2;
+                leftPosition--;
+                rightPosition++;
+            }
+            leftPosition = nNumber / 2 - 1;
+            rightPosition = nNumber / 2;
+        }
+        for (int row = 0; row < nNumber / 2; row++)
+        {
+            for (int col = 0; col < nNumber; col++)
+            {
+                int cell = matrixFire[row, col];
+                if (cell == 1)
+                {
+                    Console.Write("#");
+                }
+                else if (cell == 2)
+                {
+                    Console.Write("#");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+        for (int row = nNumber / 2 - 1; row >= (nNumber/2)/2 ; row--)
+        {
+            for (int col = nNumber - 1; col >= 0; col--)
+            {
+                int cell = matrixFire[row, col];
+                if (cell == 1)
+                {
+                    Console.Write("#");
+                }
+                else if (cell == 2)
+                {
+                    Console.Write("#");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+        Console.Write(new string('-', nNumber ));
+        Console.WriteLine();
+        int rombNumber = 0;
+        for (int i = 0; i < nNumber / 2; i++)
+        {
+            rombNumber++;
+        }
+        leftPosition = nNumber / 2 - 1;
+        rightPosition = nNumber / 2;
+        int romb = 0;
+        for (int i = 0; i < rombNumber; i++)
+        {
+            for (int row = romb; row < nNumber/2 ; row++)
+            {
+                matrixFire[row, leftPosition] = 1;
+                matrixFire[row, rightPosition] = 2;
+                leftPosition--;
+                rightPosition++;
+            }
+            leftPosition = nNumber / 2 - 1;
+            rightPosition = nNumber / 2;
+            romb ++;
+        }
+
+        for (int row = nNumber / 2 - 1; row >= 0; row--)
+        {
+            for (int col = nNumber - 1; col >= 0; col--)
+            {
+                int cell = matrixFire[row, col];
+                if (cell == 1 )
+                {
+                    Console.Write("/");
+                }
+                else if (cell == 2)
+                {
+                    Console.Write("\\");
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+}
